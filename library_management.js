@@ -13,11 +13,11 @@ get _isAvailable() {
 }
 // Setter for isAvailable
 set _isAvailable(status) {
-    if(typeof status === 'boolean') {
+    if(typeof status === true) {
         this.#_isAvailable = status;
     }
     else{
-        this.#_isAvailable = borrowed;
+        this.#_isAvailable = false
     }}
 
 getDetails() {
@@ -38,8 +38,23 @@ getAvailableBooks() {
 }
 listBooks() {
     this.books.forEach(book => {
-        let bookStatus = book._isAvailable ? "true" : "false";
+        let bookStatus = book._isAvailable ? true : false;
         return (`${book.title},${bookStatus}`)
         
     });
 }}
+//Task 3: Create a Patron Class
+class Patron {
+    constructor (name) {
+        this.name = name;
+        this.borrowedBooks = [];
+    }
+borrowBook(book) {
+    this.books.forEach (book => { 
+        bookStatus === true
+        return book._isAvailable === false
+    })}
+returnBook(book) {
+    return book._isAvailable ===true
+}
+}
