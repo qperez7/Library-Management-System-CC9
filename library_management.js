@@ -13,11 +13,11 @@ get _isAvailable() {
 }
 // Setter for isAvailable
 set _isAvailable(availability) {
-    if(typeof availability === true) {
-        this.#_isAvailable = availability;
+    if(availability === 'boolean') {
+        return this.#_isAvailable;
     }
     else{
-        this.#_isAvailable = false
+        "null"
     }}
 
 getDetails() {
@@ -38,14 +38,13 @@ getAvailableBooks() {
 }
 listBooks() {
     this.books.forEach(book => {
-        let bookStatus = book._isAvailable ? true : false;
-        return (`${book.title},${bookStatus}`)
+    return (`${book.title},${book._isAvailable}`)
         
     });
 }
 //Calculates the total books available as required in Task 5
 calculateTotalBooksAvailable() {
-    return this.name.filter(book => book._isAvailable).length
+    return this.name.filter(books => books._isAvailable).length
 }}
 //Task 3: Create a Patron Class
 class Patron {
@@ -53,15 +52,15 @@ class Patron {
         this.name = name;
         this.borrowedBooks = [];
     }
-borrowBook() {
-    this.books.forEach (book => { 
-        bookStatus === true
-        return book._isAvailable === false
-    })}
+borrowBook(book) {
+    this.borrowedBooks.push(book)
+    return Book._isAvailable(false)
+    }
 returnBook(book) {
-    return book._isAvailable ===true
-}
-}
+    this.borrowBook.filter(book)
+    return Book._isAvailable(true)
+}}
+
 // Task 4: Create a VIP Patron Class that inherits from Patron
 class VIPPatron extends Patron {
     #_priority
@@ -77,9 +76,9 @@ class VIPPatron extends Patron {
             this.#_priority = status
             return this.borrowBook()
         }
-        else 
+        else {
         return "Customer is not priority"
-    }}
+    }}}
 // Task 5: Handle Books Borrowing and Returning 
 // This has been added in Task 2 Class Section as required       
 
