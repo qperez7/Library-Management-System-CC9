@@ -42,6 +42,10 @@ listBooks() {
         return (`${book.title},${bookStatus}`)
         
     });
+}
+//Calculates the total books available as required in Task 5
+calculateTotalBooksAvailable() {
+    return this.name.filter(book => book._isAvailable).length
 }}
 //Task 3: Create a Patron Class
 class Patron {
@@ -76,5 +80,6 @@ class VIPPatron extends Patron {
         else 
         return "Customer is not priority"
     }}
-        
+// Task 5: Handle Books Borrowing and Returning 
+// This has been added in Task 2 Class Section as required       
             
