@@ -12,9 +12,9 @@ get _isAvailable() {
     return this.#_isAvailable;
 }
 // Setter for isAvailable
-set _isAvailable(status) {
-    if(typeof status === true) {
-        this.#_isAvailable = status;
+set _isAvailable(availability) {
+    if(typeof availability === true) {
+        this.#_isAvailable = availability;
     }
     else{
         this.#_isAvailable = false
@@ -49,7 +49,7 @@ class Patron {
         this.name = name;
         this.borrowedBooks = [];
     }
-borrowBook(book) {
+borrowBook() {
     this.books.forEach (book => { 
         bookStatus === true
         return book._isAvailable === false
@@ -58,3 +58,23 @@ returnBook(book) {
     return book._isAvailable ===true
 }
 }
+// Task 4: Create a VIP Patron Class that inherits from Patron
+class VIPPatron extends Patron {
+    #_priority
+    constructor (_priority,name) {
+        super(name);
+        this.#_priority = false;
+    }
+    get priority() {
+        return this.#_priority;
+    }
+    set priority(status) {
+        if(typeof status === true) {
+            this.#_priority = status
+            return this.borrowBook()
+        }
+        else 
+        return "Customer is not priority"
+    }}
+        
+            
