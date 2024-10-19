@@ -36,6 +36,7 @@ addBook(book) {
 getAvailableBooks() {
    if( this.books.filter(book => book._isAvailable = true))
     return this.books.length
+
 }
 listBooks() {
     this.books.forEach(book => {
@@ -59,7 +60,7 @@ borrowBook(book) {
     return (book._isAvailable = false && this.borrowedBooks.push(book));
     }}
 returnBook(book) {
-    this.borrowedBooks.filter(book => book._isAvailable = false)
+    if(this.borrowedBooks.filter(book => book._isAvailable = false))
     return book._isAvailable = true
 }}
 // Task 4: Create a VIP Patron Class that inherits from Patron
