@@ -34,17 +34,19 @@ addBook(book) {
     return (this.books.push(book));
 }
 getAvailableBooks() {
-    return this.books.some(book => book._isAvailable).length;
+   if( this.books.filter(book => book._isAvailable = true))
+    return this.books.length
 }
 listBooks() {
     this.books.forEach(book => {
-    return (`${book.title},${book._isAvailable}`)
+    console.log(`${book.title},${book._isAvailable}`)
         
     });
 }
 //Calculates the total books available as required in Task 5
 calculateTotalBooksAvailable() {
-    return this.name.filter(books => books._isAvailable).length
+    if( this.books.filter(book => book._isAvailable = true))
+        return this.books.length
 }}
 //Task 3: Create a Patron Class
 class Patron {
@@ -53,28 +55,30 @@ class Patron {
         this.borrowedBooks = [];
     }
 borrowBook(book) {
-    this.borrowedBooks.push(book)
-    return Book._isAvailable(false)
-    }
+    if(book._isAvailable = true) {
+    return (book._isAvailable = false && this.borrowedBooks.push(book));
+    }}
 returnBook(book) {
-    this.borrowBook.filter(book)
-    return Book._isAvailable(true)
+    this.borrowedBooks.filter(book => book._isAvailable = false)
+    return book._isAvailable = true
 }}
-
 // Task 4: Create a VIP Patron Class that inherits from Patron
 class VIPPatron extends Patron {
     #_priority
     constructor (_priority,name) {
         super(name);
-        this.#_priority = false;
+        this.#_priority = _priority;
     }
-    get priority() {
+    get _priority() {
         return this.#_priority;
     }
-    set priority(status) {
+    set _priority(status) {
         if(typeof status === true) {
             this.#_priority = status
-            return this.borrowBook()
+            vipPatron.forEach(book => { 
+                return regularPatron.returnBook(book) && vipPatron.borrowBook(book)
+                
+            });
         }
         else {
         return "Customer is not priority"
