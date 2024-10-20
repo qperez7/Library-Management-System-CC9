@@ -14,11 +14,11 @@ get _isAvailable() {
 // Setter for isAvailable
 set _isAvailable(availability) {
     if(availability === 'boolean') {
-        return this.#_isAvailable;
+        return this.#_isAvailable = availability
     }
-    else{
-        "null"
-    }}
+    else 
+        return 'null'
+    }
 
 getDetails() {
 return (`${this.title},${this.author},${this.ISBN}`)
@@ -34,7 +34,7 @@ addBook(book) {
     return (this.books.push(book));
 }
 getAvailableBooks() {
-   if( this.books.filter(book => book._isAvailable = true))
+   if( this.books.filter(book => book._isAvailable === true))
     return this.books.length
 
 }
@@ -46,7 +46,7 @@ listBooks() {
 }
 //Calculates the total books available as required in Task 5
 calculateTotalBooksAvailable() {
-    if( this.books.filter(book => book._isAvailable = true))
+    if( this.books.filter(book => book._isAvailable === true))
         return this.books.length
 }}
 //Task 3: Create a Patron Class
@@ -56,13 +56,18 @@ class Patron {
         this.borrowedBooks = [];
     }
 borrowBook(book) {
-    if(book._isAvailable = true) {
-    return (book._isAvailable = false && this.borrowedBooks.push(book));
+    if(book._isAvailable) {
+    this.borrowedBooks.push(book);
+    book._isAvailable = false;
+    return book.title
+
     }}
 returnBook(book) {
-    if(this.borrowedBooks.filter(book => book._isAvailable = false))
-    return book._isAvailable = true
-}}
+    const remove = book
+    const index = this.borrowedBooks.indexOf(remove)
+    if (index !== -1) {
+        return this.borrowedBooks.splice(index,1)
+}}}
 // Task 4: Create a VIP Patron Class that inherits from Patron
 class VIPPatron extends Patron {
     #_priority
@@ -77,7 +82,8 @@ class VIPPatron extends Patron {
         if(typeof status === true) {
             this.#_priority = status
             vipPatron.forEach(book => { 
-                return regularPatron.returnBook(book) && vipPatron.borrowBook(book)
+        return regularPatron.returnBook(book) && vipPatron.borrowBook(book)
+          
                 
             });
         }
